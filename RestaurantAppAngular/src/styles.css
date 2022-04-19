@@ -1,0 +1,43 @@
+.gradient-custom {
+    /* background: #fdccbc; */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+    }
+html, body { height: 100%;
+    background: url('https://images.unsplash.com/photo-1601000937859-3031d1be1caa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+    color: azure;
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+h1,h2,h3,h4,h5,h6,label,p{
+    color: azure;
+}
+input{
+    color: black;
+    font-weight: bolder;
+}
+option:hover {
+    background-color: yellow;
+  }
+.card{
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+}
+.card:hover{
+    transform: scale(1.05);
+ box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+button{
+    font-weight: bolder;
+}
+.btn{
+    box-shadow: 0 0 1px #ccc;
+    -webkit-transition: all 0.5s ease-in-out;
+    font-weight: bolder;
+}
+.btn:hover{
+    -webkit-transform: scale(1.1);
+    background: #b0b5b8;
+}

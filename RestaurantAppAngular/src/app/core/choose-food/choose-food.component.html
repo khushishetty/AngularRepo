@@ -1,0 +1,71 @@
+<app-navbar></app-navbar>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h4 class="text-black fw-bolder text-center ">Items have been added to cart successfully!!</h4>
+        <div *ngFor="let item of bill.foodInfos; let ind = index">
+          <h3>{{item.foodname}} : {{this.bill.quantityList[ind]}}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-5 ">
+  <div class="container d-flex">
+    <h2>Choose you favourite food!</h2>
+  </div>
+  <div class="container justify-content-center align-content-center d-flex ">
+    <button [disabled]="(selItems.size==0)" class="btn btn-lg btn-secondary text-black fw-bolder mt-5"
+      data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="showAlert()">Add items to cart</button>
+    <button class="btn btn-lg btn-dark mt-5 ms-5 fw-bolder" (click)="showDetails()">Go to Cart</button>
+
+  </div>
+
+
+  <div class="text-danger" *ngIf="(noOfFoods!=0)">
+    <h2>Sorry No Food Available</h2>
+  </div>
+  <div class="row mt-5 ">
+
+    <div *ngFor="let item of menuList; let indexOfele = index" class="col-sm-10 col-md-6 col-lg-4">
+      <div class="card border-3 border-dark gradient-custom shadow-lg m-5 mb-3 p-3" style="max-width: 540px;">
+        <h5 class="card-header bg-white text-black fw-bolder">{{item.foodname}} </h5>
+       
+        <div class="row g-0">
+          <div class="col-md-7">
+            <div class="card-body">
+              <h5 class="card-title">Rs. {{item.price}}</h5>
+              <p class="card-text">
+            </div>
+          </div>
+
+          <div class="col-md-5">
+          </div>
+
+          <div class="row">
+            <div class="col-md-7">
+              <input class="border-3 border-dark" type="number" min="0" value="0" style="width: 80px;" name=""
+                placeholder="Quantity" #foodQty
+                (change)="updateQty(item.foodid, +foodQty.value); this.choose.checked=false">
+            </div>
+            <div class="col-md-5 ">
+              <div class="form-check">
+                <input class="form-check-input " type="checkbox" value="" id="{{indexOfele}}" #choose
+                  (click)="addOrRemove(item.foodid,  +foodQty.value, this.choose.checked)"
+                  [disabled]="( +foodQty.value==0)">
+
+                <label class="form-check-label fw-bolder" id="{{indexOfele}}">
+                  Add to cart
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

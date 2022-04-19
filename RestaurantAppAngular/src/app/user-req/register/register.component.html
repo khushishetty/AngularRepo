@@ -1,0 +1,76 @@
+<!-- <p>reg works!</p> -->
+<div class="container align-items-center justify-content-center mt-5" style="height:100px;">
+  <h2 class="text-center text-uppercase fw-bolder">Food Ordering App</h2>
+  <div class="row">
+    <div class="gradient-custom shadow-lg offset-sm-1 col-sm-10 offset-md-3 col-md-6 p-5 mt-5">
+      <form #regform="ngForm" (ngSubmit)="registerUser()">
+
+        <h3>Register</h3>
+        <h5 class="text-danger">{{msg}}</h5>
+
+        <!-- name -->
+        <div class="form-group mt-5">
+          <label class="form-label fw-bold" for="name">Name</label>
+          <input required type="text" class="form-control border-2 border-dark" name="name" placeholder="Enter name"
+            [(ngModel)]="userReg.userName" #name="ngModel" [class.is-invalid]="name.invalid && name.touched"
+            pattern="^[a-zA-Z\s]+$">
+          <div *ngIf="name.errors && (name.invalid && name.touched)">
+            <small class="text-danger" *ngIf="name.errors?.['required']">Name is required field</small>
+            <small class="text-danger" *ngIf="name.errors?.['pattern']">Incorrect format of name</small>
+          </div>
+        </div>
+
+        <!-- phone -->
+        <div class="form-group mt-3">
+          <label class="form-label fw-bold" for="phoneno">Phone Number</label>
+          <input required type="" class="form-control border-2 border-dark" name="phoneno"
+            placeholder="Enter phone number" [(ngModel)]="userReg.phoneNo" #phoneno="ngModel"
+            [class.is-invalid]="phoneno.invalid && phoneno.touched" pattern="^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$">
+          <div *ngIf="phoneno.errors && (phoneno.invalid && phoneno.touched)">
+            <small class="text-danger" *ngIf="phoneno.errors?.['required']">Phone number is required field</small>
+            <small class="text-danger" *ngIf="phoneno.errors?.['pattern']">Incorrect format of phone number</small>
+          </div>
+        </div>
+
+        <!-- email -->
+        <div class="form-group mt-3">
+          <label class="form-label fw-bold" for="email">Email</label>
+          <input required type="email" class="form-control border-2 border-dark" name="email" placeholder="Enter email"
+            [(ngModel)]="userReg.email" #email="ngModel" [class.is-invalid]="email.invalid && email.touched"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+          <div *ngIf="email.errors && (email.invalid && email.touched)">
+            <small class="text-danger" *ngIf="email.errors?.['required']">Email is required field</small>
+            <small class="text-danger" *ngIf="email.errors?.['pattern']">Incorrect format of email</small>
+          </div>
+        </div>
+
+        <!-- password -->
+        <div class="form-group mt-3">
+          <label class="form-label fw-bold" for="password">Password</label>
+          <input required type="password" class="form-control border-2 border-dark" name="password"
+            placeholder="Password" [(ngModel)]="userReg.password" #password="ngModel"
+            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+            [class.is-invalid]="password.invalid && password.touched">
+          <div *ngIf="password.errors && (password.invalid && password.touched)">
+            <small class="text-danger" *ngIf="password.errors?.['required']">Password is required field</small>
+            <small class="text-danger" *ngIf="password.errors?.['pattern']">Weak Password! Must contain atleast one
+              number, uppercase letter and speacial character</small>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <label class="form-label fw-bold" for="repassword">Re-enter Password</label>
+          <input required type="password" class="form-control border-2 border-dark" name="repassword"
+            placeholder="Re-Enter Password" [(ngModel)]="repass" #repassword="ngModel"
+            [class.is-invalid]="repassword.invalid && repassword.touched">
+          <div *ngIf="repassword.errors && (repassword.invalid && repassword.touched)">
+            <small class="text-danger" *ngIf="password.errors?.['required']">Password is required field</small>
+          </div>
+        </div>
+
+        <button [disabled]="!regform.form.valid" type="submit" class="btn btn-lg btn-dark mt-5">Register</button>
+      </form>
+      <small class="float-right text-light" style="cursor: pointer;" (click)="goToLogin()">Already have an account?
+        Click here to Login!</small>
+    </div>
+  </div>
+</div>

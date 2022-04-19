@@ -1,0 +1,108 @@
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><h4 class="text-black text-center fw-bolder">Details for Order ID : <strong> {{orderId}}</strong></h4></h5>
+      </div>
+      <div class="modal-body">
+        
+        <div >
+          <table class="table table-primary table-striped table-responsive">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Food</th>
+                <th scope="col">Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of orderdetailsList; let ind = index">
+                <th scope="row">{{ind+1}}</th>
+                
+                <td>{{item.foodname}}</td>
+                <td>{{item.quantity}}</td>
+            
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<section class="vh-100" >
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-9 mb-4 mb-lg-0">
+          <div class="card shadow-lg" style="border-radius: .5rem;">
+            <div class="row g-0">
+              <div class="col-md-4 gradient-custom text-center text-white" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                <h5  class="fw-bold text-white mt-3">My Profile</h5>
+                <img
+                  src="https://d2v9ipibika81v.cloudfront.net/uploads/sites/210/Profile-Icon.png"
+                  alt="Avatar"
+                  class="img-fluid my-3 "
+                  style="width: 150px;margin:auto"
+                />
+                <h5  class="fw-bold text-white">{{user.userName}}</h5>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body p-4">
+                  <h6  class="fw-bolder text-black">Information</h6>
+                  <hr class="mt-0 mb-4">
+                  <div class="row pt-1 ">
+                    <div class="col-7 mb-3">
+                      <h6  class="fw-bolder text-black">Email <i class="fa fa-envelope ms-2"></i> </h6>
+                      <p  class="fw-bold text-black">{{user.email}}</p>
+                    </div>
+                    <div class="col-5 mb-3">
+                      <h6  class="fw-bolder text-black">Phone <i class="fa fa-phone ms-2"></i></h6>
+                      <p class="fw-bold text-black">{{user.phoneNo}}</p>
+                    </div>
+                  </div>
+
+                  <div class="container">
+                    <h6  class="fw-bold text-black">Your Purchase History</h6>
+                    <table class="table table-primary table-striped table-responsive">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">OrderId</th>
+                          <th scope="col">Restaurant</th>
+                          <th scope="col">Total</th>
+                          
+                        
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of orderHistList; let i = index">
+                          <th scope="row" >{{i+1}}</th>
+                          <td class="" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: pointer;"  (click)="showDetails(this.item.orderid);">{{item.orderid}}</td>
+                          <td>{{item.restname}}</td>
+                          <td>{{item.total}}</td>
+                      
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="row pt-1">
+                    <div class="col-12 mb-3">
+                      
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    
+  </section>
